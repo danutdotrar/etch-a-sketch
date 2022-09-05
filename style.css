@@ -1,0 +1,36 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    display: flex;
+    flex-flow: column;
+}
+
+header {
+    background-color: aquamarine;
+    text-align: center;
+}
+
+.main {
+    /* flex-grow: 1; */
+    flex: 1 1 auto;
+    background-color: rgb(219, 219, 219);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    width: 600px;
+    height: 600px;
+    background-color: white;
+}
