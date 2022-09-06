@@ -22,6 +22,7 @@ header {
     flex: 1 1 auto;
     background-color: rgb(219, 219, 219);
     display: flex;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     gap: 16px;
@@ -30,7 +31,15 @@ header {
 .controls {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 32px;
+    width: 100px;
+    /* padding: 50px; */
+}
+
+.colorPick {
+    display: flex;
+    width: 100px;
 }
 
 /* GRID */
@@ -40,8 +49,8 @@ header {
     grid-gap: 2px;
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     grid-template-rows: repeat(var(--grid-rows), 1fr);
-    width: 700px;
-    height: 700px;
+    width: 600px;
+    height: 600px;
     background-color: white;
 }
 

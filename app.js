@@ -3,16 +3,12 @@
 // set the reset button to delete all colors
 // set the eraser to erase a grid on click
 
-// Set the default grid size
+// Set the default grid size, color and mode
 const defaultSize = 16;
-
-// Set the default color
 const defaultColor = '#000000';
-
-// Set the Default Mode
 const defaultMode = 'color'
 
-// Set the current size
+// Set the current size, color and mode
 let currentSize = defaultSize;
 let currentColor = defaultColor;
 let currentMode = defaultMode;
@@ -123,10 +119,12 @@ function resetDefault() {
     clearGrid();
     setupGrid(defaultSize)
     updateSizeValue(defaultSize);
-    slider.value = 16;
+    // Set the slider back to its original position
+    slider.value = defaultSize;
     
 };
 
+// Update the value of the slider and the text
 slider.onmousemove = (e) => updateSizeValue(e.target.value)
 slider.onchange = (e) => changeSize(e.target.value)
 
