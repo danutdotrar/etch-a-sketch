@@ -40,8 +40,8 @@ header {
     grid-gap: 2px;
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     grid-template-rows: repeat(var(--grid-rows), 1fr);
-    width: 500px;
-    height: 500px;
+    width: 700px;
+    height: 700px;
     background-color: white;
 }
 

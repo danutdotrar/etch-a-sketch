@@ -23,14 +23,30 @@ const sizeValue = document.querySelector('.size-value')
 const erase = document.querySelector('.erase')
 const reset = document.querySelector('.reset')
 const multi = document.querySelector('.multi')
+const color = document.querySelector('.color')
+const colorPick = document.querySelector('.colorPick')
+
 
 erase.onclick = () => setCurrentMode('erase');
 multi.onclick = () => setCurrentMode('multi');
+color.onclick = () => setCurrentMode('color');
+reset.onclick = () => resetDefault();
+
+// Set the color pick to user's choice
+colorPick.oninput = (e) => setCurrentColor(e.target.value);
+colorPick.onclick = () => setCurrentMode('color');
 
 // Color when you hold click
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
+
+
+
+// Set the current color
+function setCurrentColor(newColor) {
+    currentColor = newColor
+};
 
 // Set the current mode
 function setCurrentMode(newMode) {
@@ -95,13 +111,21 @@ function reloadGrid() {
     setupGrid(currentSize)
 };
 
-// When click on reset button, delete all the colors
-reset.onclick = () => reloadGrid()
+
 
 // Create a function that clears the grid
 function clearGrid() {
     grid.innerHTML = '';
 }
+
+// Reset function, restore all to default
+function resetDefault() {
+    clearGrid();
+    setupGrid(defaultSize)
+    updateSizeValue(defaultSize);
+    slider.value = 16;
+    
+};
 
 slider.onmousemove = (e) => updateSizeValue(e.target.value)
 slider.onchange = (e) => changeSize(e.target.value)
