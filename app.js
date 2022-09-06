@@ -3,22 +3,109 @@
 // set the reset button to delete all colors
 // set the eraser to erase a grid on click
 
+// Set the default grid size
+const defaultSize = 16;
+
+// Set the default color
+const defaultColor = '#000000';
+
+// Set the Default Mode
+const defaultMode = 'color'
+
+// Set the current size
+let currentSize = defaultSize;
+let currentColor = defaultColor;
+let currentMode = defaultMode;
+
 const grid = document.querySelector('.grid')
-const black = document.querySelector('.black')
+const slider = document.querySelector('.slider')
+const sizeValue = document.querySelector('.size-value')
+const erase = document.querySelector('.erase')
+const reset = document.querySelector('.reset')
+const multi = document.querySelector('.multi')
 
-function makeRows(rows, cols){
-    grid.style.setProperty('--grid-rows', rows);
-    grid.style.setProperty('--grid-cols', cols);
+erase.onclick = () => setCurrentMode('erase');
+multi.onclick = () => setCurrentMode('multi');
 
-    for (c = 0; c < (rows * cols); c++) {
-        let cell = document.createElement("div");
-        // cell.innerText = (c + 1);
-        grid.appendChild(cell).className = "grid-item"
-    };
+// Color when you hold click
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+
+// Set the current mode
+function setCurrentMode(newMode) {
+    currentMode = newMode
 };
 
-makeRows(16, 16);
+// Create a function for building the grid
+function setupGrid(size) {
+    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    for (let i = 0; i < size * size; i++) {
+        const gridElement = document.createElement("div");
+        gridElement.classList.add("grid-element");
+        // Change color on click and on drag
+        gridElement.addEventListener('mouseover', changeColor)
+        gridElement.addEventListener('mousedown', changeColor)
+        grid.appendChild(gridElement);
+    }
+};
+
+// Function that changes the color
+function changeColor(e) {
+    // if click and/or hold then
+    if (e.type === 'mouseover' && !mouseDown) return
+    if (currentMode === 'color') {
+        e.target.style.backgroundColor = currentColor
+    } else if (currentMode === 'erase') {
+        e.target.style.backgroundColor = '#FEFEFE'
+    } else if (currentMode === 'multi') {
+        const randomR = Math.floor(Math.random() * 256)
+        const randomG = Math.floor(Math.random() * 256)
+        const randomB = Math.floor(Math.random() * 256)
+        e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+    }
+}
 
 
 
+// Create a function that updates the text values from slider 
+function updateSizeValue(value) {
+    sizeValue.innerHTML = `${value} x ${value}`
+}
 
+// Create a function that updates the currentSize
+function setCurrentSize(newSize) {
+    currentSize = newSize
+};
+
+// Create a function that changes the grid based on value of slider
+// This function sets the current size to the current value of the slider,
+// and reloads the grid 
+function changeSize(value) {
+    setCurrentSize(value)
+    updateSizeValue(value)
+    reloadGrid();
+};
+
+// Create a function that clears the old grid and update the new grid with currentSize
+function reloadGrid() {
+    clearGrid()
+    setupGrid(currentSize)
+};
+
+// When click on reset button, delete all the colors
+reset.onclick = () => reloadGrid()
+
+// Create a function that clears the grid
+function clearGrid() {
+    grid.innerHTML = '';
+}
+
+slider.onmousemove = (e) => updateSizeValue(e.target.value)
+slider.onchange = (e) => changeSize(e.target.value)
+
+window.onload = () => {
+    setupGrid(defaultSize)
+}
