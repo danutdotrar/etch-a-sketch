@@ -117,11 +117,13 @@ function clearGrid() {
 // Reset function, restore all to default
 function resetDefault() {
     clearGrid();
-    setupGrid(defaultSize)
+    setupGrid(defaultSize);
     updateSizeValue(defaultSize);
+    setCurrentColor(defaultColor);
+    setCurrentMode(defaultMode);
+   colorPick.value = defaultColor;
     // Set the slider back to its original position
     slider.value = defaultSize;
-    
 };
 
 // Update the value of the slider and the text
