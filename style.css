@@ -14,8 +14,11 @@ html, body {
 }
 
 header {
-    background-color: aquamarine;
+    background-color:#5900ce;
+    color: white;
     text-align: center;
+    letter-spacing: 2px;
+    word-spacing: 4px;
 }
 
 .main {
@@ -78,18 +81,18 @@ button {
     transition: .5s ease-in-out;
     border-radius: 5px;
     border: 1px white;
-    box-shadow: 0px 0px 5px 0px;
+    box-shadow: 0px 0px 5px 0px rgb(128, 128, 128);
     cursor: pointer;
 }
 
 button.active {
-    background-color: #5900ce;
+    background-color: rgb(89, 0, 206);
     color: white;
     box-shadow: 0px 0px 10px 0px;
 }
 
 button:hover {
-    background-color: #430f86;
+    background-color: #420f85;
     transition: .5s ease-in-out;
     color: white;
 }
@@ -98,6 +101,7 @@ input[type="color"] {
     width: 80px;
     height: 40px;
     cursor: pointer;
+    box-shadow: 0px 0px 5px 0px rgb(128, 128, 128);
 }
 
 .size-value {
@@ -115,4 +119,18 @@ input[type="color"] {
     height: 600px;
     background-color: white;
     box-shadow: 0px 0px 10px 0px;
+    color: gray;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    background-color: rgb(219, 219, 219);
+}
+
+a:hover {
+    transition: .5s ease-in-out;
+    color: rgb(89, 0, 206);;
 }

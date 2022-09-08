@@ -1,8 +1,3 @@
-// set a default grid size
-// set to change color of one grid on click
-// set the reset button to delete all colors
-// set the eraser to erase a grid on click
-
 // Set the default grid size, color and mode
 const defaultSize = 16;
 const defaultColor = '#000000';
@@ -83,17 +78,17 @@ function changeColor(e) {
 
 
 
-// Create a function that updates the text values from slider 
+// Updates the text values from slider 
 function updateSizeValue(value) {
     sizeValue.innerHTML = `${value} x ${value}`
 }
 
-// Create a function that updates the currentSize
+// Updates the currentSize
 function setCurrentSize(newSize) {
     currentSize = newSize
 };
 
-// Create a function that changes the grid based on value of slider
+// Changes the grid based on value of slider
 // This function sets the current size to the current value of the slider,
 // and reloads the grid 
 function changeSize(value) {
@@ -102,13 +97,13 @@ function changeSize(value) {
     reloadGrid();
 };
 
-// Create a function that clears the old grid and update the new grid with currentSize
+// Clearing the old grid and update the new grid with currentSize
 function reloadGrid() {
     clearGrid()
     setupGrid(currentSize)
 };
 
-// Function that clears the grid
+// Clearing the grid
 function clearGrid() {
     grid.innerHTML = '';
 }
@@ -148,6 +143,7 @@ function resetDefault() {
 slider.onmousemove = (e) => updateSizeValue(e.target.value)
 slider.onchange = (e) => changeSize(e.target.value)
 
+// Set the default settings
 window.onload = () => {
     activeButton(defaultMode)
     setupGrid(defaultSize)
