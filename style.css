@@ -43,25 +43,20 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 32px;
+    gap: 26px;
     /* width: 150px; */
     height: 500px;
     position: absolute;
     right: 100%;
 }
 
-input {
-    width: 100px;
-}
-
 input[type="range"] {
     -webkit-appearance: none;
-    margin-right: 15px;
-    width: 100px;
+    width: 100%;
     height: 7px;
     background: rgba(255, 255, 255, 0.6);
     border-radius: 5px;
-    background-image: linear-gradient(#ff4500, #ff4500);
+    background-image: linear-gradient(#b67eff, #522a86);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -71,18 +66,42 @@ input[type="range"]::-webkit-slider-thumb {
 height: 20px;
 width: 20px;
 border-radius: 50%;
-background: #ff4500;
+background: #5900ce;
 cursor: ew-resize;
 box-shadow: 0 0 2px 0 #555;
 transition: .3s ease-in-out;
 }
 
 button {
-    width: 100px;
+    width: 80px;
+    height: 40px;
+    transition: .5s ease-in-out;
+    border-radius: 5px;
+    border: 1px white;
+    box-shadow: 0px 0px 5px 0px;
+    cursor: pointer;
+}
+
+button.active {
+    background-color: #5900ce;
+    color: white;
+    box-shadow: 0px 0px 10px 0px;
+}
+
+button:hover {
+    background-color: #430f86;
+    transition: .5s ease-in-out;
+    color: white;
+}
+
+input[type="color"] {
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
 }
 
 .size-value {
-    margin-bottom: -25px;
+    margin-bottom: -15px;
 }
 
 /* GRID */
@@ -95,4 +114,5 @@ button {
     width: 600px;
     height: 600px;
     background-color: white;
+    box-shadow: 0px 0px 10px 0px;
 }

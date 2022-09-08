@@ -46,6 +46,7 @@ function setCurrentColor(newColor) {
 
 // Set the current mode
 function setCurrentMode(newMode) {
+    activeButton(newMode)
     currentMode = newMode
 };
 
@@ -107,11 +108,28 @@ function reloadGrid() {
     setupGrid(currentSize)
 };
 
-
-
-// Create a function that clears the grid
+// Function that clears the grid
 function clearGrid() {
     grid.innerHTML = '';
+}
+
+// Set button to active after pressing
+function activeButton(newMode) {
+    if (currentMode === 'multi') {
+        multi.classList.remove('active')
+        } else if (currentMode === 'color') {
+        color.classList.remove('active')
+        } else if (currentMode === 'erase') {
+        erase.classList.remove('active')
+        }
+
+    if (newMode === 'multi') {
+        multi.classList.add('active')
+      } else if (newMode === 'color') {
+        color.classList.add('active')
+      } else if (newMode === 'erase') {
+        erase.classList.add('active')
+      }
 }
 
 // Reset function, restore all to default
@@ -131,5 +149,6 @@ slider.onmousemove = (e) => updateSizeValue(e.target.value)
 slider.onchange = (e) => changeSize(e.target.value)
 
 window.onload = () => {
+    activeButton(defaultMode)
     setupGrid(defaultSize)
 }
