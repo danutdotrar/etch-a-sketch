@@ -4,4 +4,4 @@ This project was built with HTML, CSS and Javascript.
 I learned more about:
 - DOM Manipulation
 - Functions
-- CSS
+- CSS Grid, Flexbox
